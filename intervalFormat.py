@@ -21,5 +21,10 @@ class Interval:
 
 class Point:
     def __init__(self, pos, value):
-        self.pos = pos
-        self.value = value
+        self.pos = pos                  # fraction
+        self.value = value              # float
+
+class Palette:
+    def __init__(self, type):
+        self.data = []                  # list of Intervals and Points
+        self.type = type                # string: "sv" or "volume"
