@@ -56,7 +56,9 @@ def ease(x, option="linear", io="i"):
         y[b] = -easingDict[option](2-y[b]) * 0.5 + 1
         return y
 
-x = np.linspace(0, 1, 10001)
-y = ease(x, "bounce", "i")
-plt.plot(x, y)
-plt.show()
+# For tests
+if __name__ == "__main__":
+    x = np.linspace(0, 1, 10001)
+    y = ease(x, "bounce", "i")
+    plt.plot(x, y)
+    plt.show()
