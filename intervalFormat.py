@@ -12,19 +12,27 @@ import fractions as fr
 
 class Interval:
     def __init__(self, startPos, startValue, endPos, endValue, easeType, io):
-        self.startPos = startPos        # fraction
-        self.startValue = startValue    # float
-        self.endPos = endPos            # fraction
-        self.endValue = endValue        # float
-        self.easeType = easeType        # string
-        self.io = io                    # string
+        self.startPos = startPos             # fraction
+        self.startValue = startValue         # float
+        self.endPos = endPos                 # fraction
+        self.endValue = endValue             # float
+        self.easeType = easeType             # string
+        self.io = io                         # string
 
 class Point:
     def __init__(self, pos, value):
-        self.pos = pos                  # fraction
-        self.value = value              # float
+        self.pos = pos                       # fraction
+        self.value = value                   # float
 
 class Palette:
-    def __init__(self, type):
-        self.data = []                  # list of Intervals and Points
-        self.type = type                # string: "sv" or "volume"
+    def __init__(self, startTime, initialBPM, intervalLength, type):
+        self.startTime = startTime           # float, in ms
+        self.initialBPM = initialBPM         # int
+        self.intervalLength = intervalLength # fraction
+        self.data = []                       # list of Intervals and Points
+        self.type = type                     # string: "sv" or "vol"
+
+class Data:
+    def __init__(self, startTime, initialBPM, intervalLength):
+        self.sv = Palette(startTime, initialBPM, intervalLength, "sv")
+        self.vo = Palette(startTime, initialBPM, intervalLength, "vo")
