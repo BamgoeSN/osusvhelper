@@ -8,8 +8,6 @@ beginning of target interval to the target timing point, and its type
 is fractions.Fraction.
 '''
 
-import fractions as fr
-
 class Interval:
     def __init__(self, startPos, startValue, endPos, endValue, easeType, io):
         self.startPos = startPos             # fraction
@@ -25,12 +23,12 @@ class Point:
         self.value = value                   # float
 
 class Palette:
-    def __init__(self, startTime, initialBPM, intervalLength, type):
+    def __init__(self, startTime, initialBPM, intervalLength, target):
         self.startTime = startTime           # float, in ms
         self.initialBPM = initialBPM         # int
         self.intervalLength = intervalLength # fraction
         self.data = []                       # list of Intervals and Points
-        self.type = type                     # string: "sv" or "vol"
+        self.type = target                     # string: "sv" or "vol"
 
 class Data:
     def __init__(self, startTime, initialBPM, intervalLength):
