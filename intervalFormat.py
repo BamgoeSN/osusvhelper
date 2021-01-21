@@ -15,7 +15,7 @@ import bisect as bi
 
 class Element(metaclass=ABCMeta):
     @abstractmethod
-    def elmType(self):
+    def getElmType(self):
         pass
     @abstractmethod
     def getPos(self):
@@ -32,7 +32,7 @@ class Interval(Element):
         self.easeType = easeType             # string
         self.io = io                         # string
 
-    def elmType(self):
+    def getElmType(self):
         return "interval"
 
     def getPos(self):
@@ -49,7 +49,7 @@ class Point(Element):
         self.pos = pos                       # fraction
         self.value = value                   # float
 
-    def elmType(self):
+    def getElmType(self):
         return "point"
 
     def getPos(self):
@@ -78,7 +78,7 @@ class Palette:
             return ind
         elif self.pos[ind] == elmPos:
             return -1
-        elif (self.data[ind-1].elmType() == "interval") and (self.data[ind-1].endPos > elmPos):
+        elif (self.data[ind-1].getElmType() == "interval") and (self.data[ind-1].endPos > elmPos):
             return -1
         return ind
 
@@ -95,9 +95,9 @@ class Palette:
         For example, if self.pos==[0,1,2] and element.getPos()==1.5,
         self.isValid(element) == 2.
         '''
-        if element.elmType() == "point":
+        if element.getElmType() == "point":
             return self.isValidPoint(element)
-        elif element.elmType() == "interval":
+        elif element.getElmType() == "interval":
             return self.isValidInterval(element)
         else:
             raise TypeError("Invalid type of element")
