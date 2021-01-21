@@ -75,6 +75,13 @@ class Palette:
         # or the timing point is within any interval
         return ind
 
+    def delete(self, index):
+        '''
+        Deletes self.data[ind] and self.pos[ind]
+        '''
+        del self.data[index]
+        del self.pos[index]
+
 
 
 class Data:
