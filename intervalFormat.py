@@ -76,7 +76,7 @@ class Palette:
         elmPos = interval.getPos()
         ind = bi.bisect_left(self.pos, elmPos)
 
-    def _isValid(self, element):
+    def isValid(self, element):
         '''
         Checks if the element does not overlap with other elements.
         Returns -1 if the element is not valid.
