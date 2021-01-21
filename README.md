@@ -16,6 +16,8 @@ This might be done by simply exporting a text file with timeline data so that th
 
 There is an unrealistic (with my current level) plan of searching .osu files, supporting previews of SVs or more. These might be implemented if I be able to do so.
 
-### Current status and the nearest goal
+-------
+
+## Current status and the nearest goal
 Currently backends are being built.  
 After the basic is done, a simple console interactive application will be made for test.
