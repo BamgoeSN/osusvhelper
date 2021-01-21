@@ -71,12 +71,10 @@ class Palette:
             return -1
         return ind
 
-    
     def isValidInterval(self, interval):
         # TODO
         elmPos = interval.getPos()
         ind = bi.bisect_left(self.pos, elmPos)
-
 
     def _isValid(self, element):
         '''
@@ -92,7 +90,6 @@ class Palette:
             return self.isValidInterval(element)
         else:
             raise TypeError("Invalid type of element")
-        return ind
 
 
     def insert(self, element):
