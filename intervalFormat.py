@@ -59,8 +59,26 @@ class Palette:
         self.pos = []                        # list of positions of Intervals and Points in self.data
         self.type = target                   # string: "sv" or "vol"
 
-    def isValid(self, element):
+
+    def isValidPoint(self, point):
+        elmPos = point.getPos()
+        ind = bi.bisect_left(self.pos, elmPos)
+        if ind == 0:
+            return ind
+        elif self.pos[ind] == elmPos:
+            return -1
+        elif (self.data[ind-1].elmType() == "interval") and (self.data[ind-1].endPos > elmPos):
+            return -1
+        return ind
+
+    
+    def isValidInterval(self, interval):
         # TODO
+        elmPos = interval.getPos()
+        ind = bi.bisect_left(self.pos, elmPos)
+
+
+    def _isValid(self, element):
         '''
         Checks if the element does not overlap with other elements.
         Returns -1 if the element is not valid.
@@ -68,12 +86,14 @@ class Palette:
         For example, if self.pos==[0,1,2] and element.getPos()==1.5,
         self.isValid(element) == 2.
         '''
-        # Either its pos collides with the other already in data
-        ind = bi.bisect_left(self.pos, element.getPos())
-        if self.pos[ind] == element.getPos():
-            return -1
-        # or the timing point is within any interval
+        if element.elmType() == "point":
+            return self.isValidPoint(element)
+        elif element.elmType() == "interval":
+            return self.isValidInterval(element)
+        else:
+            raise TypeError("Invalid type of element")
         return ind
+
 
     def insert(self, element):
         ind = self.isValid(element)
