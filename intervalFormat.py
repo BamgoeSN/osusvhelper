@@ -96,6 +96,9 @@ class Palette:
         ind = self.isValid(element)
         if ind == -1:
             raise ValueError("Invalid element: the element overlaps with another element already presents")
+        else:
+            self.data.insert(ind, element)
+            self.pos.insert(ind, element.getPos())
 
     def delete(self, index):
         '''
