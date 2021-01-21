@@ -4,6 +4,9 @@ This program is built for learning GUIs with PyQt5 (and general programming), so
 
 I'm not sure if anyone will care this or if I can even achieve the most basic goal but I hope this'll go well lol
 
+Also I like Go more than Python but obviously GUI supports with Go is very weak compared to python, and therefore for now I'm continuing this project with python.
+If I learn about web programing (HTML/CSS/JS which is very likely) I might migrate this project to Go combined with web application using Electron Lorca or whatever.
+
 -------------
 
 ## Plans
