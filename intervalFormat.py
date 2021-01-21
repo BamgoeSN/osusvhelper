@@ -21,7 +21,7 @@ class Interval:
         self.easeType = easeType             # string
         self.io = io                         # string
 
-    def elmtype(self):
+    def elmType(self):
         return "interval"
 
     def getPos(self):
@@ -38,7 +38,7 @@ class Point:
         self.pos = pos                       # fraction
         self.value = value                   # float
 
-    def elmtype(self):
+    def elmType(self):
         return "point"
 
     def getPos(self):
