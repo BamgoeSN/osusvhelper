@@ -75,6 +75,11 @@ class Palette:
         # or the timing point is within any interval
         return ind
 
+    def insert(self, element):
+        ind = self.isValid(element)
+        if ind == -1:
+            raise ValueError("Invalid element: the element overlaps with another element already presents")
+
     def delete(self, index):
         '''
         Deletes self.data[ind] and self.pos[ind]
