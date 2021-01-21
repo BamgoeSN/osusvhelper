@@ -8,6 +8,8 @@ beginning of target interval to the target timing point, and its type
 is fractions.Fraction.
 '''
 
+import bisect as bi
+
 
 
 class Interval:
@@ -50,6 +52,18 @@ class Palette:
         self.data = []                       # list of Intervals and Points
         self.pos = []                        # list of positions of Intervals and Points in self.data
         self.type = target                   # string: "sv" or "vol"
+
+    def isValid(self, element):
+        # TODO
+        '''
+        Checks if the element does not overlap with other elements
+        '''
+        # Either its pos collides with the other already in data
+        ind = bi.bisect_left(self.pos, element.getPos())
+        if self.pos[ind] == element.getPos():
+            return False
+        # or the timing point is within any interval
+        return True
 
 
 
