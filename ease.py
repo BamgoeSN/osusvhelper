@@ -1,7 +1,6 @@
 # Easing functions all receive one float between 0 and 1 inclusive.
 
 import numpy as np
-import matplotlib.pyplot as plt
 elasticPeriod = 0.3
 backConst = 1.70158
 bounceN = 7.5625
@@ -58,6 +57,7 @@ def ease(x, option="linear", io="i"):
 
 # For tests
 if __name__ == "__main__":
+    import matplotlib.pyplot as plt
     x = np.linspace(0, 1, 10001)
     y = ease(x, "bounce", "i")
     plt.plot(x, y)
