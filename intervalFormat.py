@@ -8,11 +8,22 @@ beginning of target interval to the target timing point, and its type
 is fractions.Fraction.
 '''
 
+from abc import ABCMeta, abstractmethod
 import bisect as bi
 
 
 
-class Interval:
+class Timeline(metaclass=ABCMeta):
+    @abstractmethod
+    def elmType(self):
+        pass
+    @abstractmethod
+    def getPos(self):
+        pass
+
+
+
+class Interval(Timeline):
     def __init__(self, startPos, startValue, endPos, endValue, easeType, io):
         self.startPos = startPos             # fraction
         self.startValue = startValue         # float
@@ -33,7 +44,7 @@ class Interval:
 
 
 
-class Point:
+class Point(Timeline):
     def __init__(self, pos, value):
         self.pos = pos                       # fraction
         self.value = value                   # float
