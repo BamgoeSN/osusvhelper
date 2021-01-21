@@ -13,7 +13,7 @@ import bisect as bi
 
 
 
-class Timeline(metaclass=ABCMeta):
+class Element(metaclass=ABCMeta):
     @abstractmethod
     def elmType(self):
         pass
@@ -23,7 +23,7 @@ class Timeline(metaclass=ABCMeta):
 
 
 
-class Interval(Timeline):
+class Interval(Element):
     def __init__(self, startPos, startValue, endPos, endValue, easeType, io):
         self.startPos = startPos             # fraction
         self.startValue = startValue         # float
@@ -44,7 +44,7 @@ class Interval(Timeline):
 
 
 
-class Point(Timeline):
+class Point(Element):
     def __init__(self, pos, value):
         self.pos = pos                       # fraction
         self.value = value                   # float
