@@ -56,14 +56,18 @@ class Palette:
     def isValid(self, element):
         # TODO
         '''
-        Checks if the element does not overlap with other elements
+        Checks if the element does not overlap with other elements.
+        Returns -1 if the element is not valid.
+        Returns the position the element should be inserted if it's valid.
+        For example, if self.pos==[0,1,2] and element.getPos()==1.5,
+        self.isValid(element) == 2.
         '''
         # Either its pos collides with the other already in data
         ind = bi.bisect_left(self.pos, element.getPos())
         if self.pos[ind] == element.getPos():
-            return False
+            return -1
         # or the timing point is within any interval
-        return True
+        return ind
 
 
 
