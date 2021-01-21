@@ -21,6 +21,9 @@ class Interval:
         self.easeType = easeType             # string
         self.io = io                         # string
 
+    def elmtype(self):
+        return "interval"
+
     def getPos(self):
         '''
         getPos is for getting startPos for preventing interval overlap.
@@ -34,6 +37,9 @@ class Point:
     def __init__(self, pos, value):
         self.pos = pos                       # fraction
         self.value = value                   # float
+
+    def elmtype(self):
+        return "point"
 
     def getPos(self):
         '''
