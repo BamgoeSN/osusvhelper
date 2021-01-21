@@ -1,4 +1,5 @@
-# osu!taiko Timeline Helper
+# osu!taiko Timeline Helper ![Generic badge](https://img.shields.io/badge/status-in%20dev-red)
+
 osu!taiko SV/Volume helper is a program aiming for helping you to apply gradual SV/volume changes easily to an osu!taiko beatmap.  
 This program is built for learning GUIs with PyQt5 (and general programming), so any feedbacks and helps are appreciated.
 
