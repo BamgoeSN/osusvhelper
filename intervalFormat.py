@@ -17,10 +17,24 @@ class Interval:
         self.easeType = easeType             # string
         self.io = io                         # string
 
+    def getPos(self):
+        '''
+        getPos is for getting startPos for preventing interval overlap.
+        This will be used when inserting elements in Palette.data.
+        '''
+        return self.startPos
+
 class Point:
     def __init__(self, pos, value):
         self.pos = pos                       # fraction
         self.value = value                   # float
+
+    def getPos(self):
+        '''
+        getPos is for getting pos for preventing interval overlap.
+        This will be used when inserting elements in Palette.data.
+        '''
+        return self.pos
 
 class Palette:
     def __init__(self, startTime, initialBPM, intervalLength, target):
@@ -28,7 +42,7 @@ class Palette:
         self.initialBPM = initialBPM         # int
         self.intervalLength = intervalLength # fraction
         self.data = []                       # list of Intervals and Points
-        self.type = target                     # string: "sv" or "vol"
+        self.type = target                   # string: "sv" or "vol"
 
 class Data:
     def __init__(self, startTime, initialBPM, intervalLength):
