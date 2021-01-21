@@ -48,6 +48,7 @@ class Palette:
         self.initialBPM = initialBPM         # int
         self.intervalLength = intervalLength # fraction
         self.data = []                       # list of Intervals and Points
+        self.pos = []                        # list of positions of Intervals and Points in self.data
         self.type = target                   # string: "sv" or "vol"
 
 
