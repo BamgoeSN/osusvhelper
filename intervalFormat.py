@@ -92,7 +92,7 @@ class Palette:
                 if nextElm.pos <= point.pos:
                     return -1
             elif nextElm.getElmType() == "interval":
-                if nextElm.pos <= point.pos:
+                if nextElm.startPos <= point.pos:
                     return -1
 
         return ind
