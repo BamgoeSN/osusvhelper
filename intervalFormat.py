@@ -72,6 +72,8 @@ class Palette:
 
 
     def isValidPoint(self, point):
+        if point.pos > self.intervalLength:
+            return -2
         ind = bi.bisect_left(self.pos, point.pos)
         
         # Prev
@@ -99,6 +101,8 @@ class Palette:
 
 
     def isValidInterval(self, interval):
+        if interval.startPos > self.intervalLength or interval.endPos > self.intervalLength:
+            return -2
         ind = bi.bisect_left(self.pos, interval.startPos)
 
         # Prev
@@ -129,6 +133,7 @@ class Palette:
         '''
         Checks if the element does not overlap with other elements.
         Returns -1 if the element is not valid.
+        Returns -2 if the element is out of time range
         Returns the position the element should be inserted if it's valid.
         For example, if self.pos==[0,1,2] and element.getPos()==1.5,
         self.isValid(element) == 2.
@@ -145,6 +150,8 @@ class Palette:
         ind = self.isValid(element)
         if ind == -1:
             raise ValueError("Invalid element: the element overlaps with another element already presents")
+        elif ind == -2:
+            raise ValueError("Invalid element: position of the element is out of the palette range")
         else:
             self.data.insert(ind, element)
             self.pos.insert(ind, element.getPos())
