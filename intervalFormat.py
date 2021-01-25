@@ -138,3 +138,25 @@ class Data:
     def __init__(self, startTime, initialBPM, intervalLength):
         self.sv = Palette(startTime, initialBPM, intervalLength, "sv")
         self.vo = Palette(startTime, initialBPM, intervalLength, "vo")
+
+    def pickPalette(self, palette):
+        if palette == "sv":
+            return self.sv
+        elif palette == "vo":
+            return self.vo
+        else:
+            raise ValueError("Invalid palette type")
+
+    def insertPoint(self, palette, pos, value):
+        target = self.pickPalette(palette)
+        point = Point(pos, value)
+        target.insert(point)
+
+    def insertInterval(self, palette, startPos, startValue, endPos, endValue, easeType, io):
+        target = self.pickPalette(palette)
+        interval = Interval(startPos, startValue, endPos, endValue, easeType, io)
+        target.insert(interval)
+
+    def deleteElement(self, palette, index):
+        target = self.pickPalette(palette)
+        target.delete(index)
