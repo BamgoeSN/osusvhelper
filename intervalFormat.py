@@ -84,9 +84,7 @@ class Palette:
 
 
     def isValidInterval(self, interval):
-        elmStart = interval.startPos
-        elmEnd = interval.endPos
-        ind = bi.bisect_left(self.pos, elmStart)
+        ind = bi.bisect_left(self.pos, interval.startPos)
 
         # Prev
         if ind <= len(self.pos) and ind > 0:
