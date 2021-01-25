@@ -88,16 +88,27 @@ class Palette:
         elmEnd = interval.endPos
         ind = bi.bisect_left(self.pos, elmStart)
 
-        if self.pos[ind] == elmStart:
-            return -1
-        else:
-            if (ind > 0) and (self.data[ind-1].getElmType() == "interval") and (self.data[ind-1].endPos > elmStart):
-                return -1
-            if ind < len(self.data):
-                if (self.data[ind+1].getElmType() == "interval") and (self.data[ind+1].startPos < elmEnd):
+        # Prev
+        if ind <= len(self.pos) and ind > 0:
+            prevElm = self.data[ind-1]
+            if prevElm.getElmType() == "point":
+                if prevElm.pos >= interval.startPos:
                     return -1
-                elif (self.data[ind+1].getElmType() == "point") and (self.data[ind+1].pos < elmEnd):
+            elif prevElm.getElmType() == "interval":
+                if prevElm.startPos >= interval.startPos:
                     return -1
+                elif prevElm.endPos > interval.startPos:
+                    return -1
+        # Next
+        if ind < len(self.pos) and ind >= 0:
+            nextElm = self.data[ind]
+            if nextElm.getElmType() == "point":
+                if nextElm.pos < interval.endPos:
+                    return -1
+            elif nextElm.getElmType() == "interval":
+                if nextElm.startPos < interval.endPos:
+                    return -1
+
         return ind
         
 
