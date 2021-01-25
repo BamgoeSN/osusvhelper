@@ -72,14 +72,29 @@ class Palette:
 
 
     def isValidPoint(self, point):
-        elmPos = point.getPos()
-        ind = bi.bisect_left(self.pos, elmPos)
-        if ind == 0:
-            return ind
-        elif self.pos[ind] == elmPos:
-            return -1
-        elif (self.data[ind-1].getElmType() == "interval") and (self.data[ind-1].endPos > elmPos):
-            return -1
+        ind = bi.bisect_left(self.pos, point.pos)
+        
+        # Prev
+        if ind <= len(self.pos) and ind > 0:
+            prevElm = self.data[ind-1]
+            if prevElm.getElmType() == "point":
+                if prevElm.pos >= point.pos:
+                    return -1
+            elif prevElm.getElmType() == "interval":
+                if prevElm.startPos >= point.pos:
+                    return -1
+                if prevElm.endPos > point.pos:
+                    return -1
+        # Next
+        if ind < len(self.pos) and ind >= 0:
+            nextElm = self.data[ind]
+            if nextElm.getElmType() == "point":
+                if nextElm.pos <= point.pos:
+                    return -1
+            elif nextElm.getElmType() == "interval":
+                if nextElm.pos <= point.pos:
+                    return -1
+
         return ind
 
 
