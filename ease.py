@@ -39,6 +39,7 @@ def bounceBase(x):
     return 1 - bounceBaseCore(1-x, bounceD, bounceN)
 
 # Lists for options
+easingList = ["linear", "quad", "cubic", "quart", "quint", "sine", "expo", "circ", "back", "elastic", "bounce"]
 easingDict = {"linear":linearBase, "quad":quadBase, "cubic":cubicBase, "quart":quartBase, "quint":quintBase, "sine":sineBase, "expo":expoBase, "circ":circBase, "back":backBase, "elastic":elasticBase, "bounce":bounceBase}
 
 # Complete function
